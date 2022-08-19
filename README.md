@@ -3,7 +3,7 @@
 ## An elevator pitch of your game idea
 
 
-##Tech Being Used
+## Tech Being Used
 * HTML/CSS
 * JavaScript
 
