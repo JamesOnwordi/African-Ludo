@@ -3,11 +3,11 @@
 ## An elevator pitch of your game idea
 
 
-## What tech stack you plan on using
+##Tech Being Used
 * HTML/CSS
 * JavaScript
 
-## Wireframes of your game
+## Wireframe
 ![Wireframe](LudoPic.png)
 
 ## MVP Checklist
@@ -17,7 +17,7 @@
 * Have a End zone players work towards
 * Have a dice roll button
 
-## Stretch Goals
+## Stretch Goal
 * Different game modes
 * A graphic representation of Die Roll
 * Board Rotation
