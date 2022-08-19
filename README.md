@@ -22,3 +22,4 @@ Ludo is a strategy board game for two to four players, in which the players race
 * Different game modes
 * A graphic representation of Die Roll
 * Board Rotation
+* Have moving characters
