@@ -1,6 +1,7 @@
 # Ludo
 
-## An elevator pitch of your game idea
+## The Game
+Ludo is a strategy board game for two to four players, in which the players race their four tokens from start to finish according to the rolls of dice.
 
 
 ## Tech Being Used
