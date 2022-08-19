@@ -1,0 +1,67 @@
+#board{
+    width :750px;
+    height:750px;
+    display: grid;
+    grid-template-columns: 1.25fr 1fr 1.25fr;
+    grid-template-rows: 1.25fr 1fr 1.25fr;
+    background-color:black;
+    grid-gap: 10px;
+}
+.home{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+#zone1{
+    background-color: blue;
+}
+#zone2{
+    grid-column-start: 3;
+    background-color: red;
+}
+#zone3{
+    grid-row-start: 3;
+    background-color: yellow;
+}
+#zone4{
+    background-color: green;
+    grid-row-start: 3;
+    grid-column-start: 3;
+}
+#path1{
+    background-color:purple;
+    grid-row-start: 1;
+    grid-column-start: 2;
+}
+#path2{
+    background-color:green;
+    grid-row-start: 2;
+    grid-column-start: 1;
+}
+#path3{
+    background-color: brown;
+    grid-row-start: 2;
+    grid-column-start: 3;
+}
+#path4{
+    background-color:greenyellow;
+}
+#endZone{
+    background-color:white;
+}
+#home1, #home2, #home3, #home4{
+    width:60%;
+    height: 60%;
+}
+.pathway1{
+    display: grid;
+    grid-template-columns:1fr 1fr 1fr ;
+    grid-template-rows:1fr 1fr 1fr 1fr 1fr 1fr ;
+}
+
+.pathway2{
+    display: grid;
+    grid-template-rows:1fr 1fr 1fr ;
+    grid-template-columns:1fr 1fr 1fr 1fr 1fr 1fr ;
+}
