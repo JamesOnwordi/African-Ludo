@@ -76,7 +76,7 @@ function rollDice(){
     return 6
 }
 
-function newPlayer(){
+function getPosition(){
     switch(playerTurn.name){
         case ("blue"):
             playerTurn.position[playerTurn.inside-1] =1
@@ -106,6 +106,7 @@ function newPlayer(){
             console.log("bring out a token")
             console.log(playerTurn.inside-1)
             console.log( playerTurn.position[playerTurn.inside-1])
+            return
             // document.getElementById(`box${playerTurn.position[playerTurn.track]}`).classList.add(`${playerTurn.name}Token`)
         break
         default:
@@ -138,34 +139,55 @@ function movePlayer(){
  //   document.getElementById(`box${temp}`).removeEventListener("click",movePlayer)
     // playerTurn.home.removeEventListener("click",makeNewPlayer)
 }
+// -----------------------------------------------------------------------
+// this allows players come out and also put's the eventListener on hold
+// using booleans
 function token1Outside(){
     if(playerTurn.listener[0]==true){
         console.log("bring number 1 out")
+        // reduces the width and height of the token
+        document.getElementById("zone3Token1").classList.add("onBoard")
+        getPosition()
+        document.getElementById(`box${40}`).append(document.getElementById("zone3Token1"))
         playerTurn.listener[0]=false
     }
-
 }
 function token2Outside(){
     if(playerTurn.listener[1]==true){
         console.log("bring number 2 out")
+        document.getElementById("zone3Token2").classList.add("onBoard")
+        getPosition()
+        document.getElementById(`box${40}`).append(document.getElementById("zone3Token2"))
         playerTurn.listener[1]=false
     }
-
 }
 function token3Outside(){
     if(playerTurn.listener[2]==true){
         console.log("bring number 3 out")
+        document.getElementById("zone3Token3").classList.add("onBoard")
+        getPosition()
+        document.getElementById(`box${40}`).append(document.getElementById("zone3Token3"))
         playerTurn.listener[2]=false
     }
-
 }
 function token4Outside(){
     if(playerTurn.listener[3]==true){
         console.log("bring number 4 out")
+        document.getElementById("zone3Token4").classList.add("onBoard")
+        getPosition()
+        document.getElementById(`box${40}`).append(document.getElementById("zone3Token4"))
         playerTurn.listener[3]=false
     }
-
 }
+
+function moveToken(){
+
+    document.getElementById(`box${43}`).append(document.getElementById("zone3Token1"))
+}
+// -----------------------------------------------------------------------
+function bringOut(e){
+}
+// -----------------------------------------------------------------------
 function makeAMove(){
      dice1 =rollDice()
      dice2 =rollDice()
@@ -175,6 +197,14 @@ function makeAMove(){
      document.getElementById("zone3Token2").addEventListener("click",token2Outside)
      document.getElementById("zone3Token3").addEventListener("click",token3Outside)
      document.getElementById("zone3Token4").addEventListener("click",token4Outside)
+
+     document.getElementById("zone3Token1").addEventListener("click",moveToken)
+     document.getElementById("zone3Token2").addEventListener("click",token2Outside)
+     document.getElementById("zone3Token3").addEventListener("click",token3Outside)
+     document.getElementById("zone3Token4").addEventListener("click",token4Outside)
+
+     
+
 
 
     // if(playerTurn.finished == 4)

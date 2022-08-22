@@ -111,8 +111,8 @@
     border: 12px solid red;
     border-radius: 100px;
 }
-.onPath{
-    width: 50%;
-    height: 50%;
+.onBoard{
+    width: 10px;
+    height: 10px;
 
 }
