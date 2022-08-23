@@ -1,3 +1,4 @@
+let num = 0
 document.addEventListener("DOMContentLoaded",function()
 {
 // initialization of important elements
@@ -16,7 +17,8 @@ blue ={
     listener:[true,true,true,true],
     track:null,
     name:"blue",
-    home: document.getElementById("zone1")
+    home: document.getElementById("zone1"),
+    zone: "zone1"
 }
 red ={
     inside:4,
@@ -26,7 +28,8 @@ red ={
     listener:[true,true,true,true],
     name:"red",
     track:null,
-    home: document.getElementById("zone2")
+    home: document.getElementById("zone2"),
+    zone: "zone2"
 }
 yellow ={
     inside:4,
@@ -37,7 +40,8 @@ yellow ={
     currentToken:null,
     name:"yellow",
     track:null,
-    home: document.getElementById("zone3")
+    home: document.getElementById("zone3"),
+    zone: "zone3"
 }
 green ={
     inside:4,
@@ -47,7 +51,8 @@ green ={
     listener:[true,true,true,true],
     name:"green",
     track:null,
-    home: document.getElementById("zone4")
+    home: document.getElementById("zone4"),
+    zone: "zone4"
 }
 
 // keep track of whose turn it is
@@ -79,34 +84,21 @@ function rollDice(){
 function getPosition(){
     switch(playerTurn.name){
         case ("blue"):
-            playerTurn.position[playerTurn.inside-1] =1
-            text.innerText ="bring out a token"
-            info.append("text")
-            console.log("bring out a token")
+            console.log("here")
+            return 1
             // document.getElementById(`box${playerTurn.position[playerTurn.track]}`).classList.add(`${playerTurn.name}Token`)
         break
         case ("red"):
-            playerTurn.position[playerTurn.inside-1] =14
-            text.innerText ="bring out a token"
-            info.append("text")
-            console.log("bring out a token")
+            return 14
+            
             // document.getElementById(`box${playerTurn.position[playerTurn.track]}`).classList.add(`${playerTurn.name}Token`)
         break
         case ("green"):
-            playerTurn.position[playerTurn.inside-1] =27
-            text.innerText ="bring out a token"
-            info.append("text")
-            console.log("bring out a token")
+            return 27
             // document.getElementById(`box${playerTurn.position[playerTurn.track]}`).classList.add(`${playerTurn.name}Token`)
         break
         case ("yellow"):
-            playerTurn.position[playerTurn.inside-1] =40
-            text.innerText ="bring out a token"
-            info.append("bring out a token")
-            console.log("bring out a token")
-            console.log(playerTurn.inside-1)
-            console.log( playerTurn.position[playerTurn.inside-1])
-            return
+            return 40
             // document.getElementById(`box${playerTurn.position[playerTurn.track]}`).classList.add(`${playerTurn.name}Token`)
         break
         default:
@@ -142,47 +134,56 @@ function movePlayer(){
 // -----------------------------------------------------------------------
 // this allows players come out and also put's the eventListener on hold
 // using booleans
+let vessel 
 function token1Outside(){
     if(playerTurn.listener[0]==true){
         console.log("bring number 1 out")
         // reduces the width and height of the token
-        document.getElementById("zone3Token1").classList.add("onBoard")
-        getPosition()
-        document.getElementById(`box${40}`).append(document.getElementById("zone3Token1"))
+        console.log(playerTurn.zone)
+        document.getElementById(`${playerTurn.zone}Token1`).classList.add("onBoard")
+        let vessel =getPosition()
+        console.log(vessel)
+        document.getElementById(`box${vessel}`).append(document.getElementById(`${playerTurn.zone}Token1`))
+        playerTurn.position[0] =vessel
         playerTurn.listener[0]=false
     }
 }
 function token2Outside(){
     if(playerTurn.listener[1]==true){
         console.log("bring number 2 out")
-        document.getElementById("zone3Token2").classList.add("onBoard")
-        getPosition()
-        document.getElementById(`box${40}`).append(document.getElementById("zone3Token2"))
+        document.getElementById(`${playerTurn.zone}Token2`).classList.add("onBoard")
+        let vessel =getPosition()
+        document.getElementById(`box${vessel}`).append(document.getElementById(`${playerTurn.zone}Token2`))
+        playerTurn.position[1] =vessel
         playerTurn.listener[1]=false
     }
 }
 function token3Outside(){
     if(playerTurn.listener[2]==true){
         console.log("bring number 3 out")
-        document.getElementById("zone3Token3").classList.add("onBoard")
-        getPosition()
-        document.getElementById(`box${40}`).append(document.getElementById("zone3Token3"))
+        document.getElementById(`${playerTurn.zone}Token3`).classList.add("onBoard")
+        let vessel =getPosition()
+        document.getElementById(`box${vessel}`).append(document.getElementById(`${playerTurn.zone}Token3`))
+        playerTurn.position[2] =vessel
         playerTurn.listener[2]=false
     }
 }
 function token4Outside(){
     if(playerTurn.listener[3]==true){
         console.log("bring number 4 out")
-        document.getElementById("zone3Token4").classList.add("onBoard")
-        getPosition()
-        document.getElementById(`box${40}`).append(document.getElementById("zone3Token4"))
+        console.log(document.getElementById(`${playerTurn.zone}Token4`).innerText)
+        document.getElementById(`${playerTurn.zone}Token4`).classList.add("onBoard")
+        let vessel =getPosition()
+        document.getElementById(`box${vessel}`).append(document.getElementById(`${playerTurn.zone}Token4`))
+        playerTurn.position[0] =vessel
         playerTurn.listener[3]=false
     }
 }
 
 function moveToken(){
 
-    document.getElementById(`box${43}`).append(document.getElementById("zone3Token1"))
+     num++
+    document.getElementById(`box${num}`).append(document.getElementById(`${playerTurn.zone}Token1`))
 }
 // -----------------------------------------------------------------------
 function bringOut(e){
@@ -193,15 +194,17 @@ function makeAMove(){
      dice2 =rollDice()
 
 
-     document.getElementById("zone3Token1").addEventListener("click",token1Outside)
-     document.getElementById("zone3Token2").addEventListener("click",token2Outside)
-     document.getElementById("zone3Token3").addEventListener("click",token3Outside)
-     document.getElementById("zone3Token4").addEventListener("click",token4Outside)
+    //  document.getElementById(`${playerTurn.zone}Token1`).addEventListener("click",token1Outside)
+    //  document.getElementById(`${playerTurn.zone}Token2`).addEventListener("click",token2Outside)
+    //  document.getElementById(`${playerTurn.zone}Token3`).addEventListener("click",token3Outside)
+    //  document.getElementById(`${playerTurn.zone}Token4`).addEventListener("click",token4Outside)
 
-     document.getElementById("zone3Token1").addEventListener("click",moveToken)
-     document.getElementById("zone3Token2").addEventListener("click",token2Outside)
-     document.getElementById("zone3Token3").addEventListener("click",token3Outside)
-     document.getElementById("zone3Token4").addEventListener("click",token4Outside)
+    console.log(playerTurn.zone)
+    changePlayer()
+     document.getElementById(`${playerTurn.zone}Token1`).addEventListener("click",token1Outside)
+     document.getElementById(`${playerTurn.zone}Token2`).addEventListener("click",token2Outside)
+     document.getElementById(`${playerTurn.zone}Token3`).addEventListener("click",token3Outside)
+     document.getElementById(`${playerTurn.zone}Token4`).addEventListener("click",token4Outside)
 
      
 
@@ -381,7 +384,7 @@ function makeAMove(){
 // //     // }
 // //     //rollDice()
      makeAMove()
-     makeAMove()
+    //  makeAMove()
 //     // changePlayer()
 //     // makeAmove()
 //     // changePlayer()
