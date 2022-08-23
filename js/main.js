@@ -1,4 +1,5 @@
 let num = 0
+let value
 document.addEventListener("DOMContentLoaded",function()
 {
 // initialization of important elements
@@ -7,6 +8,10 @@ const text = document.createAttribute("h1")
 
 let dice1 
 let dice2
+
+let usedDice1 =false
+let usedDice2 =false
+
 // initialization of players object
 let blue,yellow,green,red
 blue ={
@@ -15,6 +20,7 @@ blue ={
     finished:0,
     position:[null,null,null,null],
     listener:[true,true,true,true],
+    move:[false,true,true,true],
     track:null,
     name:"blue",
     home: document.getElementById("zone1"),
@@ -26,6 +32,7 @@ red ={
     finished:0,
     position:[null,null,null,null],
     listener:[true,true,true,true],
+    move:[false,true,true,true],
     name:"red",
     track:null,
     home: document.getElementById("zone2"),
@@ -37,6 +44,7 @@ yellow ={
     finished:0,
     position:[0,0,0,0],
     listener:[true,true,true,true],
+    move:[false,true,true,true],
     currentToken:null,
     name:"yellow",
     track:null,
@@ -49,6 +57,7 @@ green ={
     finished:0,
     position:[null,null,null,null],
     listener:[true,true,true,true],
+    move:[false,false,false,false],
     name:"green",
     track:null,
     home: document.getElementById("zone4"),
@@ -84,7 +93,6 @@ function rollDice(){
 function getPosition(){
     switch(playerTurn.name){
         case ("blue"):
-            console.log("here")
             return 1
             // document.getElementById(`box${playerTurn.position[playerTurn.track]}`).classList.add(`${playerTurn.name}Token`)
         break
@@ -131,6 +139,44 @@ function movePlayer(){
  //   document.getElementById(`box${temp}`).removeEventListener("click",movePlayer)
     // playerTurn.home.removeEventListener("click",makeNewPlayer)
 }
+function move1around(){
+    console.log("move")
+    if(playerTurn.move[0]==true){
+        console.log("player moved")
+    temp = playerTurn.position[0]
+    playerTurn.position[0] += dice2
+    document.getElementById(`box${playerTurn.position[0]}`).append(document.getElementById(`${playerTurn.zone}Token1`))
+    playerTurn.move[0]=false
+    }
+}
+function move2around(){
+    if(playerTurn.move[1]==true){
+        console.log("player moved")
+    temp = playerTurn.position[1]
+    playerTurn.position[1] += dice2
+    document.getElementById(`box${playerTurn.position[1]}`).append(document.getElementById(`${playerTurn.zone}Token2`))
+    playerTurn.move[1]=false
+    }
+}
+function move3around(){
+    if(playerTurn.move[2]==true){
+        console.log("player moved")
+    temp = playerTurn.position[2]
+    playerTurn.position[2] += dice2
+    document.getElementById(`box${playerTurn.position[2]}`).append(document.getElementById(`${playerTurn.zone}Token3`))
+    playerTurn.move[2]=false
+    }
+}
+function move4around(){
+    if(playerTurn.move[3]==true){
+        console.log("player moved")
+    temp = playerTurn.position[3]
+    playerTurn.position[3] += dice2
+    document.getElementById(`box${playerTurn.position[3]}`).append(document.getElementById(`${playerTurn.zone}Token4`))
+    playerTurn.move[3]=false
+    }
+}
+
 // -----------------------------------------------------------------------
 // this allows players come out and also put's the eventListener on hold
 // using booleans
@@ -145,7 +191,6 @@ function token1Outside(){
         console.log(vessel)
         document.getElementById(`box${vessel}`).append(document.getElementById(`${playerTurn.zone}Token1`))
         playerTurn.position[0] =vessel
-        playerTurn.listener[0]=false
     }
 }
 function token2Outside(){
@@ -155,7 +200,7 @@ function token2Outside(){
         let vessel =getPosition()
         document.getElementById(`box${vessel}`).append(document.getElementById(`${playerTurn.zone}Token2`))
         playerTurn.position[1] =vessel
-        playerTurn.listener[1]=false
+        console.log(vessel)
     }
 }
 function token3Outside(){
@@ -165,7 +210,6 @@ function token3Outside(){
         let vessel =getPosition()
         document.getElementById(`box${vessel}`).append(document.getElementById(`${playerTurn.zone}Token3`))
         playerTurn.position[2] =vessel
-        playerTurn.listener[2]=false
     }
 }
 function token4Outside(){
@@ -175,8 +219,83 @@ function token4Outside(){
         document.getElementById(`${playerTurn.zone}Token4`).classList.add("onBoard")
         let vessel =getPosition()
         document.getElementById(`box${vessel}`).append(document.getElementById(`${playerTurn.zone}Token4`))
-        playerTurn.position[0] =vessel
-        playerTurn.listener[3]=false
+        playerTurn.position[3] =vessel
+    }
+}
+
+function step2(){
+        console.log("here")
+        if(dice2 ==6){
+         document.getElementById(`${playerTurn.zone}Token1`).addEventListener("click",function(){
+            if(playerTurn.listener[0]== true){
+            token1Outside()
+            console.log("event 2",playerTurn.listener[0],playerTurn.move[0])
+            playerTurn.listener=[false,false,false,false]}
+        })
+        document.getElementById(`${playerTurn.zone}Token2`).addEventListener("click",function(){
+            if(playerTurn.listener[1]== true){
+            token2Outside
+            console.log("event 2",playerTurn.listener[1],playerTurn.move[1])
+            playerTurn.listener=[false,false,false,false]}
+        })
+        document.getElementById(`${playerTurn.zone}Token3`).addEventListener("click",function(){
+            if(playerTurn.listener[2] ==true){ 
+                token3Outside
+                console.log("event 2",playerTurn.listener[2],playerTurn.move[2])
+                playerTurn.listener=[false,false,false,false]
+            }
+        })
+        document.getElementById(`${playerTurn.zone}Token4`).addEventListener("click",function(){
+            if(playerTurn.listener[3]== true){
+            token4Outside
+            console.log("event 2",playerTurn.listener[3],playerTurn.move[3])
+            playerTurn.listener=[false,false,false,false]
+            }
+        })
+        document.getElementById(`${playerTurn.zone}Token1`).addEventListener("click",function(){
+            if(playerTurn.move[0] == true){
+            console.log("event 3",playerTurn.listener[0],playerTurn.move[0])
+            move1around()
+            playerTurn.listener=[false,false,false,false]
+            playerTurn.move=[false,false,false,false]
+            }
+        })
+        document.getElementById(`${playerTurn.zone}Token2`).addEventListener("click",function(){
+            if(playerTurn.move[1] == true){
+            console.log("event 3",playerTurn.listener[1],playerTurn.move[1])
+            move2around()
+            playerTurn.listener=[false,false,false,false]
+            playerTurn.move=[false,false,false,false]
+            }
+        })
+        document.getElementById(`${playerTurn.zone}Token3`).addEventListener("click",function(){
+            if(playerTurn.move[2] == true){
+            console.log("event 3",playerTurn.listener[2],playerTurn.move[2])
+            move3around()
+            playerTurn.listener=[false,false,false,false]
+            playerTurn.move=[false,false,false,false]
+            }
+        })
+        document.getElementById(`${playerTurn.zone}Token4`).addEventListener("click",function(){
+            if(playerTurn.move[3] == true){
+            console.log("event 3",playerTurn.listener[3],playerTurn.move[3])
+            move4around()
+            playerTurn.listener=[false,false,false,false]
+            playerTurn.move=[false,false,false,false]
+            }
+        })
+       
+        // document.getElementById(`${playerTurn.zone}Token1`).addEventListener("click",token1Outside)
+        // document.getElementById(`${playerTurn.zone}Token2`).addEventListener("click",token2Outside)
+        // document.getElementById(`${playerTurn.zone}Token3`).addEventListener("click",token3Outside)
+        // document.getElementById(`${playerTurn.zone}Token4`).addEventListener("click",token4Outside)
+        // playerTurn.listener=[false,false,false,false]
+    }
+    else{
+       value.addEventListener("click",function(){
+            movePlayer()
+            playerTurn.listener=[false,false,false,false]
+        })
     }
 }
 
@@ -192,43 +311,92 @@ function bringOut(e){
 function makeAMove(){
      dice1 =rollDice()
      dice2 =rollDice()
+    
+
+     if(dice1 == 6||dice2 == 6){
+        // Nobody outside && People Inside
+        if(dice1 == 6){
+            document.getElementById(`${playerTurn.zone}Token1`).addEventListener("click",function(e){
+                if(playerTurn.listener[0] == true && usedDice1 == false){
+                    token1Outside()
+                    playerTurn.listener[0]=false
+                    playerTurn.move=[true,false,false,false]
+                    console.log("event 1",playerTurn.listener[0],playerTurn.move[0])
+                    step2()
+                    usedDice1 = true
+                }    
+            })
+            document.getElementById(`${playerTurn.zone}Token2`).addEventListener("click",function(e){
+                token2Outside()
+                if(playerTurn.listener[1] == true && usedDice1 == false){
+                    playerTurn.listener[1]=false
+                    playerTurn.move=[false,true,false,false]
+                    console.log("event 1",playerTurn.listener[1],playerTurn.move[1])
+                    step2()
+                    usedDice1 = true
+                }
+            })
+            document.getElementById(`${playerTurn.zone}Token3`).addEventListener("click",function(e){
+                token3Outside()
+                if(playerTurn.listener[2] == true && usedDice1 == false){
+                    playerTurn.listener[2]=false
+                    playerTurn.move=[false,false,true,false]
+                    console.log("event 1",playerTurn.listener[2],playerTurn.move[2])
+                    step2()
+                }
+            })
+            document.getElementById(`${playerTurn.zone}Token4`).addEventListener("click",function(e){
+                token4Outside()
+                if(playerTurn.listener[3] == true && usedDice1 == false){
+                    playerTurn.listener[3]=false
+                    playerTurn.move=[false,false,false,true]
+                    console.log("event 1",playerTurn.listener[3],playerTurn.move[3])
+                    step2()
+                    usedDice1 = true
+                 }
+            })
+        }
+        // People outside && People Inside
+        // Nobody outside && Nobody Inside
+     }
 
 
-    //  document.getElementById(`${playerTurn.zone}Token1`).addEventListener("click",token1Outside)
-    //  document.getElementById(`${playerTurn.zone}Token2`).addEventListener("click",token2Outside)
-    //  document.getElementById(`${playerTurn.zone}Token3`).addEventListener("click",token3Outside)
-    //  document.getElementById(`${playerTurn.zone}Token4`).addEventListener("click",token4Outside)
-
-    console.log(playerTurn.zone)
-    changePlayer()
-     document.getElementById(`${playerTurn.zone}Token1`).addEventListener("click",token1Outside)
-     document.getElementById(`${playerTurn.zone}Token2`).addEventListener("click",token2Outside)
-     document.getElementById(`${playerTurn.zone}Token3`).addEventListener("click",token3Outside)
-     document.getElementById(`${playerTurn.zone}Token4`).addEventListener("click",token4Outside)
-
-     
-
-
-
-    // if(playerTurn.finished == 4)
-    // {
-    //     // move to nextPlayer
-
-    // }
-        // if(dice1 == 6||dice2 == 6){
-            // console.log("i'm in " ,playerTurn, " home")
-            
-            // // keeps playerTurn.track of how many is left inside and not in the game board
-            //  playerTurn.track = playerTurn.inside-1
-            // // allows those inside come out
-            // // gives power to the div box to bring a player out
-            // if(playerTurn.track == 3 )
-            // {
-                // assigns a position to the token
-                // console.log("here")
-                // newPlayer()
-                // console.log("here")
-}
+    }
+    
+        //  document.getElementById(`${playerTurn.zone}Token1`).addEventListener("click",token1Outside)
+        //  document.getElementById(`${playerTurn.zone}Token2`).addEventListener("click",token2Outside)
+        //  document.getElementById(`${playerTurn.zone}Token3`).addEventListener("click",token3Outside)
+        //  document.getElementById(`${playerTurn.zone}Token4`).addEventListener("click",token4Outside)
+    
+        // console.log(playerTurn.zone)
+        // changePlayer()
+        //  document.getElementById(`${playerTurn.zone}Token1`).addEventListener("click",token1Outside)
+        //  document.getElementById(`${playerTurn.zone}Token2`).addEventListener("click",token2Outside)
+        //  document.getElementById(`${playerTurn.zone}Token3`).addEventListener("click",token3Outside)
+        //  document.getElementById(`${playerTurn.zone}Token4`).addEventListener("click",token4Outside)
+    
+         
+    
+    
+    
+        // if(playerTurn.finished == 4)
+        // {
+        //     // move to nextPlayer
+    
+        // }
+            // if(dice1 == 6||dice2 == 6){
+                // console.log("i'm in " ,playerTurn, " home")
+                
+                // // keeps playerTurn.track of how many is left inside and not in the game board
+                //  playerTurn.track = playerTurn.inside-1
+                // // allows those inside come out
+                // // gives power to the div box to bring a player out
+                // if(playerTurn.track == 3 )
+                // {
+                    // assigns a position to the token
+                    // console.log("here")
+                    // newPlayer()
+                    // console.log("here")
                 // if(dice1 ==6 ){
                 //     if(dice2 == 6){
                 //         // an option is given to the user
