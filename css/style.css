@@ -47,23 +47,18 @@
     border: 10px solid black;
 }
 #path1{
-    
-    background-color:purple;
     grid-row-start: 1;
     grid-column-start: 2;
 }
 #path2{
-    background-color:green;
     grid-row-start: 2;
     grid-column-start: 1;
 }
 #path3{
-    background-color: brown;
     grid-row-start: 2;
     grid-column-start: 3;
 }
 #path4{
-    background-color:greenyellow;
 }
 #endZone{
     background-color:black;
@@ -115,4 +110,7 @@
     width: 10px;
     height: 10px;
 
+}
+.road{
+    border: 2px solid black;
 }

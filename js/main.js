@@ -230,19 +230,23 @@ function step2(){
             if(playerTurn.listener[0]== true){
             token1Outside()
             console.log("event 2",playerTurn.listener[0],playerTurn.move[0])
-            playerTurn.listener=[false,false,false,false]}
+            playerTurn.listener=[false,false,false,false]
+            playerTurn.move=[false,false,false,false]
+        }
         })
         document.getElementById(`${playerTurn.zone}Token2`).addEventListener("click",function(){
             if(playerTurn.listener[1]== true){
             token2Outside
             console.log("event 2",playerTurn.listener[1],playerTurn.move[1])
-            playerTurn.listener=[false,false,false,false]}
+            playerTurn.listener=[false,false,false,false]
+            playerTurn.move=[false,false,false,false]}
         })
         document.getElementById(`${playerTurn.zone}Token3`).addEventListener("click",function(){
             if(playerTurn.listener[2] ==true){ 
                 token3Outside
                 console.log("event 2",playerTurn.listener[2],playerTurn.move[2])
                 playerTurn.listener=[false,false,false,false]
+                playerTurn.move=[false,false,false,false]
             }
         })
         document.getElementById(`${playerTurn.zone}Token4`).addEventListener("click",function(){
@@ -250,6 +254,7 @@ function step2(){
             token4Outside
             console.log("event 2",playerTurn.listener[3],playerTurn.move[3])
             playerTurn.listener=[false,false,false,false]
+            playerTurn.move=[false,false,false,false]
             }
         })
         document.getElementById(`${playerTurn.zone}Token1`).addEventListener("click",function(){
