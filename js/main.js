@@ -1,4 +1,4 @@
-// let num = 0
+// let num = player
 // let value
 // document.addEventListener("DOMContentLoaded", function () {
 //     // initialization of important elements
@@ -842,6 +842,7 @@
 //     // console.log(playerTurn)
 // })
 
+
 blue = {
     inside: 4,
     outside: 0,
@@ -864,7 +865,7 @@ yellow = {
     inside: 4,
     outside: 0,
     finished: 0,
-    position: [0, 0, 0, 0],
+    position: [null, null, null, null],
     name: "yellow",
     home: document.getElementById("zone3"),
     zone: "zone3"
@@ -902,6 +903,19 @@ function rollDice() {
 
 let player = blue
 
+function changePlayer() {
+    console.log(player)
+    if (player == blue)
+        player = red
+    else if (player == red)
+        player = green
+    else if (player == green)
+        player = yellow
+    else
+        player = blue
+}
+console.log(blue, red, green, yellow)
+
 function bringOut(index){
     if(player.position[index] == null){
         console.log(`bringing Token ${index} out in position ${player.position[index]}`)
@@ -917,26 +931,118 @@ function bringOut(index){
 function moveToken(index,value){
     if(player.position[index] != null){
     console.log(`moving Token ${index} by  ${value} `)
-    player.position[index] += value
-    let targetBox = document.getElementById(`box${player.position[index]}`)
-    console.log(targetBox)
-    targetBox.append(document.getElementById(`${player.zone}Token${index}`))}
+    player.position[index] = getTokensPath(index,value)
+    if(player.position[index] != "finished"){
+        let targetBox = document.getElementById(`box${player.position[index]}`)
+        console.log(targetBox)
+        targetBox.append(document.getElementById(`${player.zone}Token${index}`))}
+    }
+    else{
+        let endZone = document.getElementById("endZone")
+        endZOne.append(document.getElementById(`${player.zone}Token${index}`))
+    }
+    // setInterval(function(){
+    //     if(player.position[index] == goToBox)
+    //     player.position[index]++
+    //     targetBox = document.getElementById(`box${player.position[index]}`)
+    //     console.log(targetBox)
+    //     targetBox.append(document.getElementById(`${player.zone}Token${index}`))
+    // },2000)
 }
+
+function getTokensPath(index,value){
+    switch (player.name) {
+        case ("blue"):
+            if((player.position[index] +value) >56){
+                console.log("Player Won")
+                // won
+                console.log("have not made skip turn")
+                let targetBox = document.getElementById(`box${player.position[index]}`)
+                targetBox.append(document.getElementById("endZone"))
+                return position[index] ="finished"
+                // skip turn 
+            }
+            else return player.position[index]+value
+        case ("red"):
+            if((player.position[index] +value) >51){
+                // change path to start from 0
+                return (player.position[index] +value) - 52
+            }
+            if(player.position[index]+value >12 && player.position[index]<13){
+                // change path to start from 57
+                return ((player.position[index] +value) - 12)+56
+            }
+            if(player.position[index]+value >61 ){
+                console.log("Player Won")
+                // won
+                console.log("have not made skip turn")
+                let targetBox = document.getElementById(`box${player.position[index]}`)
+                targetBox.append(document.getElementById("endZone"))
+                return position[index] ="finished"
+            }
+            else return player.position[index]+value
+        case ("green"):
+            if((player.position[index] +value) >51){
+                // change path to start from 0
+                return (player.position[index] +value) - 52
+            }
+            if(player.position[index] +value >25 && player.position[index]<26){
+                // change path to start from 62
+                return ((player.position[index] +value) - 25)+61
+            }
+            if(player.position[index] +value >66){
+                // won
+                console.log("have not made skip turn")
+                let targetBox = document.getElementById(`box${player.position[index]}`)
+                targetBox.append(document.getElementById("endZone"))
+                return position[index] ="finished"
+            }
+            else return player.position[index]+value
+        case ("yellow"):
+            if(player.position[index]+value >51){
+                // change path to start from 0
+                return (player.position[index] +value) - 52
+            }
+            if(player.position[index]+value >38 && player.position[index]<39){
+                // change path to start from 67
+                return ((player.position[index] +value) - 38)+66
+            }
+            if(player.position[index] >71){
+                console.log("Player Won")
+                // won
+                console.log("have not made skip turn")
+                let targetBox = document.getElementById(`box${player.position[index]}`)
+                targetBox.append(document.getElementById("endZone"))
+                return position[index] ="finished"
+            }
+            else return player.position[index]+value
+        default:
+            console.log("error")
+    }
+}
+
+function colorCheck(e){
+    return e.target.classList[0] ==`${player.name}Token`
+    } 
 
 let diceButton 
 let dice1
 let dice2
 let dice1Used
 let dice2Used
+let gameOn =false
 function playersRoll(){
     diceButton = document.getElementById("roll")
     diceButton.addEventListener("click",function(){
-    dice1= rollDice()
-    dice2= rollDice()
-    dice1Used = false
-    dice2Used = false
-    console.log(dice1,dice2)
-    tokenMoves()
+        if(gameOn == false){
+            gameOn =true
+            dice1= 6 //rollDice()
+            dice2= 6 //rollDice()
+            dice1Used = false
+            dice2Used = false
+            console.log(dice1,dice2)
+            tokenMoves()
+        }
     })
 }
 
@@ -944,17 +1050,21 @@ function tokenMoves(){
         if(dice1 == 6){
             dice2Used =true
             for(let i=1;i<5;i++){
-                 document.getElementById(`${player.zone}Token${i}`).addEventListener("click",function(){
-                    if (dice1Used == false && player.position[i] == null) {
+                 document.getElementById(`${player.zone}Token${i}`).addEventListener("click",function(e){
+                    if (dice1Used == false && player.position[i] == null && colorCheck(e)) {
+                        console.log(e.target.classList[0] ==`${player.name}Token`)
                         console.log("dice1")
+                        gameOn =true
                         bringOut(i)
                         dice1Used = true
                         setTimeout(()=>{dice2Used =false},200) 
                     }
                  })
-                 document.getElementById(`${player.zone}Token${i}`).addEventListener("click",function(){
-                    if (dice1Used == false && player.position[i] != null) {
+                 document.getElementById(`${player.zone}Token${i}`).addEventListener("click",function(e){
+                    if (dice1Used == false && player.position[i] != null && colorCheck(e)) {
+                        console.log(e.target.zone)
                         console.log("dice1")
+                        gameOn =true
                         moveToken(i,dice1)
                         dice1Used = true
                         setTimeout(()=>{dice2Used =false},200) 
@@ -963,62 +1073,76 @@ function tokenMoves(){
             }
             if(dice2 ==6){
                 for(let i=1;i<5;i++){
-                    document.getElementById(`${player.zone}Token${i}`).addEventListener("click",function(){
-                       if (dice2Used == false && player.position[i] == null) {
+                    document.getElementById(`${player.zone}Token${i}`).addEventListener("click",function(e){
+                       if (dice2Used == false && player.position[i] == null && colorCheck(e)) {
                         console.log("dice2")
-                           bringOut(i)
-                           dice1Used = true
-                           dice2Used =true
+                        bringOut(i)
+                        dice1Used = true
+                        dice2Used =true
+                        gameOn =false
+                        changePlayer()
+                        start()
                        }
                     })
-                    document.getElementById(`${player.zone}Token${i}`).addEventListener("click",function(){
-                       if (dice2Used == false && player.position[i] != null) {
+                    document.getElementById(`${player.zone}Token${i}`).addEventListener("click",function(e){
+                       if (dice2Used == false && player.position[i] != null && colorCheck(e)) {
                         console.log("dice2")
                            moveToken(i,dice2)
                            dice1Used = true
                            dice2Used =true
+                           gameOn =false
+                           changePlayer()
+                           start()
                        }
                     })
                }
             }else{
                 for(let i=1;i<5;i++){
-                        document.getElementById(`${player.zone}Token${i}`).addEventListener("click",function(){
-                        if (dice2Used == false && player.position[i] != null) {
+                        document.getElementById(`${player.zone}Token${i}`).addEventListener("click",function(e){
+                        if (dice2Used == false && player.position[i] != null && colorCheck(e)) {
                             console.log("dice2")
                             moveToken(i,dice2)
                             dice1Used = true
                             dice2Used =true
+                            gameOn =false
+                            changePlayer()
+                            start()
                         }
                  })}
             }
         }else if(dice2 == 6){
             dice1Used =true
             for(let i=1;i<5;i++){
-                document.getElementById(`${player.zone}Token${i}`).addEventListener("click",function(){
-                   if (dice2Used == false && player.position[i] == null) {
+                document.getElementById(`${player.zone}Token${i}`).addEventListener("click",function(e){
+                   if (dice2Used == false && player.position[i] == null && colorCheck(e)) {
                     console.log("dice2")
                        bringOut(i)
                        dice2Used =true
+                       gameOn =true
                        setTimeout(()=>{dice1Used =false},200)
                    }
                 })
-                document.getElementById(`${player.zone}Token${i}`).addEventListener("click",function(){
-                   if (dice2Used == false && player.position[i] != null) {
+                document.getElementById(`${player.zone}Token${i}`).addEventListener("click",function(e){
+                   if (dice2Used == false && player.position[i] != null & colorCheck(e)) {
                     console.log("dice2")
                        moveToken(i,dice2)
                        dice2Used =true
+                       gameOn =true
                        setTimeout(()=>{dice1Used =false},200)
                    }
                 })
             }
                     for(let i=1;i<5;i++){
-                        document.getElementById(`${player.zone}Token${i}`).addEventListener("click",function(){
-                            if (dice1Used == false && player.position[i] != null) {
+                        document.getElementById(`${player.zone}Token${i}`).addEventListener("click",function(e){
+                            if (dice1Used == false && player.position[i] != null && colorCheck(e)) {
                                 console.log("dice1")
                                 console.log(dice1)
                                 moveToken(i,dice1)
                                 dice1Used = true
                                 dice2Used =true
+                                gameOn =false
+                                changePlayer()
+                                start()
                             }
                         })
                     }
@@ -1026,20 +1150,24 @@ function tokenMoves(){
             if(player.inside != 4){
             dice2Used =true
             for(let i =1;i<5;i++){
-            document.getElementById(`${player.zone}Token${i}`).addEventListener("click",function(){
-                if (dice1Used == false && player.position[i] != null) {
+            document.getElementById(`${player.zone}Token${i}`).addEventListener("click",function(e){
+                if (dice1Used == false && player.position[i] != null && colorCheck(e)) {
                     console.log("dice1")
                     moveToken(i,dice1)
                     dice1Used = true
+                    gameOn =true
                     setTimeout(()=>{dice2Used =false},200) 
                 }
              })
-            document.getElementById(`${player.zone}Token${i}`).addEventListener("click",function(){
-                if (dice2Used == false && player.position[i] != null) {
+            document.getElementById(`${player.zone}Token${i}`).addEventListener("click",function(e){
+                if (dice2Used == false && player.position[i] != null && colorCheck(e)) {
                  console.log("dice2")
                     moveToken(i,dice2)
                     dice2Used =true
                     dice1Used =true
+                    gameOn =false
+                    changePlayer()
+                    start()
                 }
              })}}
              else{
@@ -1056,7 +1184,7 @@ function tokenMoves(){
 function start(){
     playersRoll()
 
-    if(dice1Used == false){
+    if(dice1Used == true ){
         if(dice1 == 6){
 
         }else{
@@ -1068,10 +1196,8 @@ function start(){
     }
 }
 document.addEventListener("DOMContentLoaded",function(){
-    //start()
-    console.log("Hi")
-    playersRoll()
-    tokenMoves()
+    start()
+    
 })
 
 
