@@ -936,20 +936,121 @@ function playersRoll(){
     dice1Used = false
     dice2Used = false
     console.log(dice1,dice2)
+    tokenMoves()
     })
 }
 
 function tokenMoves(){
-    if(dice1Used == false){
         if(dice1 == 6){
-
+            dice2Used =true
+            for(let i=1;i<5;i++){
+                 document.getElementById(`${player.zone}Token${i}`).addEventListener("click",function(){
+                    if (dice1Used == false && player.position[i] == null) {
+                        console.log("dice1")
+                        bringOut(i)
+                        dice1Used = true
+                        setTimeout(()=>{dice2Used =false},200) 
+                    }
+                 })
+                 document.getElementById(`${player.zone}Token${i}`).addEventListener("click",function(){
+                    if (dice1Used == false && player.position[i] != null) {
+                        console.log("dice1")
+                        moveToken(i,dice1)
+                        dice1Used = true
+                        setTimeout(()=>{dice2Used =false},200) 
+                    }
+                 })
+            }
+            if(dice2 ==6){
+                for(let i=1;i<5;i++){
+                    document.getElementById(`${player.zone}Token${i}`).addEventListener("click",function(){
+                       if (dice2Used == false && player.position[i] == null) {
+                        console.log("dice2")
+                           bringOut(i)
+                           dice1Used = true
+                           dice2Used =true
+                       }
+                    })
+                    document.getElementById(`${player.zone}Token${i}`).addEventListener("click",function(){
+                       if (dice2Used == false && player.position[i] != null) {
+                        console.log("dice2")
+                           moveToken(i,dice2)
+                           dice1Used = true
+                           dice2Used =true
+                       }
+                    })
+               }
+            }else{
+                for(let i=1;i<5;i++){
+                        document.getElementById(`${player.zone}Token${i}`).addEventListener("click",function(){
+                        if (dice2Used == false && player.position[i] != null) {
+                            console.log("dice2")
+                            moveToken(i,dice2)
+                            dice1Used = true
+                            dice2Used =true
+                        }
+                 })}
+            }
+        }else if(dice2 == 6){
+            dice1Used =true
+            for(let i=1;i<5;i++){
+                document.getElementById(`${player.zone}Token${i}`).addEventListener("click",function(){
+                   if (dice2Used == false && player.position[i] == null) {
+                    console.log("dice2")
+                       bringOut(i)
+                       dice2Used =true
+                       setTimeout(()=>{dice1Used =false},200)
+                   }
+                })
+                document.getElementById(`${player.zone}Token${i}`).addEventListener("click",function(){
+                   if (dice2Used == false && player.position[i] != null) {
+                    console.log("dice2")
+                       moveToken(i,dice2)
+                       dice2Used =true
+                       setTimeout(()=>{dice1Used =false},200)
+                   }
+                })
+            }
+                    for(let i=1;i<5;i++){
+                        document.getElementById(`${player.zone}Token${i}`).addEventListener("click",function(){
+                            if (dice1Used == false && player.position[i] != null) {
+                                console.log("dice1")
+                                console.log(dice1)
+                                moveToken(i,dice1)
+                                dice1Used = true
+                                dice2Used =true
+                            }
+                        })
+                    }
         }else{
-
+            if(player.inside != 4){
+            dice2Used =true
+            for(let i =1;i<5;i++){
+            document.getElementById(`${player.zone}Token${i}`).addEventListener("click",function(){
+                if (dice1Used == false && player.position[i] != null) {
+                    console.log("dice1")
+                    moveToken(i,dice1)
+                    dice1Used = true
+                    setTimeout(()=>{dice2Used =false},200) 
+                }
+             })
+            document.getElementById(`${player.zone}Token${i}`).addEventListener("click",function(){
+                if (dice2Used == false && player.position[i] != null) {
+                 console.log("dice2")
+                    moveToken(i,dice2)
+                    dice2Used =true
+                    dice1Used =true
+                }
+             })}}
+             else{
+                for(let i =1;i<5;i++){
+                    // document.getElementById(`${player.zone}Token${i}`).addEventListener("click",function()
+                    // {
+                    //     console.log("NO moves to make")
+                    // })
+                }
+            }
         }
-    }
-    if(dice2Used == false){
-
-    }
 }
 
 function start(){
@@ -967,7 +1068,10 @@ function start(){
     }
 }
 document.addEventListener("DOMContentLoaded",function(){
-    start()
+    //start()
+    console.log("Hi")
+    playersRoll()
+    tokenMoves()
 })
 
 
