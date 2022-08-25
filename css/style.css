@@ -1,13 +1,57 @@
+body{
+    background-image: url("https://img.freepik.com/premium-photo/white-dominoes-yellow-background-top-view-board-game-place-text_153325-295.jpg?w=2000");
+    object-fit: contain;
+}
+#gameArea{
+display: flex;
+}
+.Parent{
+    display: block;
+    background-image: url("https://images.unsplash.com/photo-1553095066-5014bc7b7f2d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8d2FsbCUyMGJhY2tncm91bmR8ZW58MHx8MHx8&w=1000&q=80");
+    margin: 20px;
+    border: 2px solid; 
+    border-image: url("https://besthqwallpapers.com/Uploads/22-6-2019/96924/thumb2-seamless-wooden-planks-4k-brown-wooden-background-wooden-textures-brown-backgrounds.jpg")1 / 11px round;
+}
 #board{
-    width :750px;
-    height:750px;
+    width :930px;
+    height:930px;
     display: grid;
     grid-template-columns: 1fr .75fr 1fr;
     grid-template-rows: 1fr .75fr 1fr;
     background-color:white;
     /* grid-gap: 10px; */
-    border: 1px solid black;
+    border: 10px solid; 
+    border-image: url("https://besthqwallpapers.com/Uploads/22-6-2019/96924/thumb2-seamless-wooden-planks-4k-brown-wooden-background-wooden-textures-brown-backgrounds.jpg")13 / 11px round;
+    /* padding: 5px; */
+     margin: 0px 0px 0px 0px; 
 }
+#information{
+    width :400px;
+    height: 200px;
+    background-color: white;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button { 
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    display: block;
+    font-size: 16px;
+    margin: 20px;
+    width: 150px;
+    height: 150px;
+  }
+  #controlUnit{
+    
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
 /* .home{
     display: flex;
     justify-content: center;
@@ -20,31 +64,71 @@
     grid-template-rows: 1fr 1fr;
     place-items: center;
     border: 10px solid black;
+    width: 70%;
+    height: 70%;
+    background-color: white  ;
+}
+#rim{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(27, 96, 244, 0.797);
+}
+#rim2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+     grid-column-start: 3;
+     background-color: rgba(226, 18, 18, 0.74);
+}
+#rim3{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+     grid-row-start: 3;
+     background-color: yellow;
+     
+}
+#rim4{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-row-start: 3;
+    grid-column-start: 3;
+    background-color: rgba(40, 231, 26, 0.704);
 }
 #zone2{
-    grid-column-start: 3;
+   
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     place-items: center;
     border: 10px solid black;
+    width: 70%;
+    height: 70%;
+    background-color: white;
 }
 #zone3{
-    grid-row-start: 3;
+   
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     place-items: center;
     border: 10px solid black;
+    width: 70%;
+    height: 70%;
+    background-color: white;
 }
 #zone4{
-    grid-row-start: 3;
-    grid-column-start: 3;
+    
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     place-items: center;
     border: 10px solid black;
+    width: 70%;
+    height: 70%;
+    background-color: white;
 }
 #path1{
     grid-row-start: 1;
@@ -61,7 +145,7 @@
 #path4{
 }
 #endZone{
-    background-color:black;
+    background-color:rebeccapurple;
 }
 #home1, #home2, #home3, #home4{
     width:60%;
@@ -79,39 +163,124 @@
     grid-template-columns:1fr 1fr 1fr 1fr 1fr 1fr ;
 }
 .blueToken{
-    background-color: blue;
+    background-color: rgba(28, 28, 229, 0.654);
     height: 50%;
     width: 50%;
-    border: 12px solid blue;
+    border: 12px solid rgba(12, 12, 190, 0.654);
     border-radius: 100px;
+    text-align: center;
+    color:white;
 }
 .yellowToken{
-    background-color: yellow;
+    background-color: rgba(250, 217, 8, 0.865);
     height: 50%;
     width: 50%;
-    border: 12px solid yellow;
+    border: 12px solid rgba(215, 205, 19, 0.865);
     border-radius: 100px;
+    text-align: center;
+    color:white;
 }
 .greenToken{
-    background-color: green;
+    background-color:rgba(23, 190, 12, 0.865);
     height: 50%;
     width: 50%;
     border: 12px solid green;
     border-radius: 100px;
+    text-align: center;
+    color:white;
 }
 .redToken{
-    background-color: red;
+    background-color: rgba(180, 32, 32, 0.7982);
     height: 50%;
     width: 50%;
-    border: 12px solid red;
+    border: 12px solid rgba(180, 32, 32, 0.7982);
     border-radius: 100px;
+    text-align: center;
+    color: white;
 }
 .onBoard{
-    width: 7px;
-    height: 7px;
+    width: 5px;
+    height: 5px;
 
 }
 .road{
     border: 2px solid black;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    width: 58px;
+    height: 58px;
+    /* flex-wrap: wrap;
+    justify-content: center;
+    align-items: center; */
+}
+.blueSpecialBoxes{
+    background-color: rgba(27, 96, 244, 0.797);
+}
+.redSpecialBoxes{
+    background-color: rgba(226, 18, 18, 0.74);
+}
+.greenSpecialBoxes{
+    background-color: rgba(40, 231, 26, 0.704);
+}
+.yellowSpecialBoxes{
+    background-color: yellow;
+}
+.specialSpot{
+     background-image: url("https://t4.ftcdn.net/jpg/01/21/31/99/360_F_121319958_ArkfMiHvr9eUyvbSOLOe25oP3k8Ine9n.webp");
+     background-position: center;
+     object-fit: contain;
+     background-size: 77px 50px;
+}
+.specialSpotLeft{
+    background-image: url("https://w7.pngwing.com/pngs/126/346/png-transparent-blue-arrow-arrow-hand-blue.png");
+     background-position: center ;
+     object-fit: contain;
+     background-size: 77px 50px;
+}
+.specialSpotRight{
+    background-image: url("https://icones.pro/wp-content/uploads/2021/06/symbole-fleche-gauche-vert.png");
+    background-position: center;
+    object-fit: contain;
+    background-repeat: no-repeat;
+    background-size: 77px 50px;
+}
+.specialSpotUp{
+    background-image: url("https://library.kissclipart.com/20180904/eeq/kissclipart-curved-down-arrow-png-clipart-arrow-clip-art-98f3bcc959bed3a9.jpg");
+    background-position: center ;
+    object-fit: contain;
+    background-size: 77px 50px;
+}
+#roll{
+    background-image: url("https://avatars.slack-edge.com/2020-05-17/1129241889778_2c06bc6173c24a1f3cac_512.png");
+    background-position: center ;
+    object-fit: contain;
+    background-repeat: no-repeat;
+    color: black;
+    height: 370px;
     display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#AI{
+    background-color: yellow;
+    color: blue;
+}
+#reset{
+    background-color: red;
+    color: yellow;
+}
+#start{
+    background-color: blue;
+    color: greenyellow;
+}
+#instruction{
+    background-color: greenyellow;
+    color: red;
+}
+h1{
+    font-size: 35px;
+}
+P{
+    font-size: 18px;
 }

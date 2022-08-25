@@ -918,6 +918,7 @@ console.log(blue, red, green, yellow)
 
 function bringOut(index){
     if(player.position[index] == null){
+        player.inside --
         console.log(`bringing Token ${index} out in position ${player.position[index]}`)
         document.getElementById(`${player.zone}Token${index}`).classList.add("onBoard")
         let getHomePosition = getPosition()
@@ -1031,19 +1032,27 @@ let dice2
 let dice1Used
 let dice2Used
 let gameOn =false
+let startButton = true
 function playersRoll(){
     diceButton = document.getElementById("roll")
-    diceButton.addEventListener("click",function(){
+    document.getElementById("start").addEventListener("click",function(){
+        if(startButton == true){
+        console.log("here")
+        startButton =false
+        setTimeout(()=>{document.getElementById("display").innerHTML=`Let the Game Begin,`},100)
+        setTimeout(()=>{document.getElementById("display").innerHTML="Blue's Starts ... Roll Dice"},1200)
+        diceButton.addEventListener("click",function(){
         if(gameOn == false){
             gameOn =true
-            dice1= 6 //rollDice()
-            dice2= 6 //rollDice()
+            dice1= rollDice()
+            dice2= rollDice()
             dice1Used = false
             dice2Used = false
             console.log(dice1,dice2)
+            setTimeout(()=>{document.getElementById("display").innerHTML=`Dice Rolled... ${player.name} has rolled ${dice1} ${dice2}`},500)
             tokenMoves()
         }
-    })
+    })}})
 }
 
 function tokenMoves(){
@@ -1053,7 +1062,7 @@ function tokenMoves(){
                  document.getElementById(`${player.zone}Token${i}`).addEventListener("click",function(e){
                     if (dice1Used == false && player.position[i] == null && colorCheck(e)) {
                         console.log(e.target.classList[0] ==`${player.name}Token`)
-                        console.log("dice1")
+                        setTimeout(()=>{document.getElementById("display").innerHTML=`You just played a ${dice1}, you have a ${dice2} left`,200})
                         gameOn =true
                         bringOut(i)
                         dice1Used = true
@@ -1063,7 +1072,7 @@ function tokenMoves(){
                  document.getElementById(`${player.zone}Token${i}`).addEventListener("click",function(e){
                     if (dice1Used == false && player.position[i] != null && colorCheck(e)) {
                         console.log(e.target.zone)
-                        console.log("dice1")
+                        setTimeout(()=>{document.getElementById("display").innerHTML=`You just played a ${dice1}, you have a ${dice2} left`,200})
                         gameOn =true
                         moveToken(i,dice1)
                         dice1Used = true
@@ -1075,7 +1084,8 @@ function tokenMoves(){
                 for(let i=1;i<5;i++){
                     document.getElementById(`${player.zone}Token${i}`).addEventListener("click",function(e){
                        if (dice2Used == false && player.position[i] == null && colorCheck(e)) {
-                        console.log("dice2")
+                        setTimeout(()=>{document.getElementById("display").innerHTML=`${dice2} played`},100)
+                        setTimeout(()=>{document.getElementById("display").innerHTML=`${player.name} Turn ... Roll Dice`},800)
                         bringOut(i)
                         dice1Used = true
                         dice2Used =true
@@ -1086,13 +1096,14 @@ function tokenMoves(){
                     })
                     document.getElementById(`${player.zone}Token${i}`).addEventListener("click",function(e){
                        if (dice2Used == false && player.position[i] != null && colorCheck(e)) {
-                        console.log("dice2")
-                           moveToken(i,dice2)
-                           dice1Used = true
-                           dice2Used =true
-                           gameOn =false
-                           changePlayer()
-                           start()
+                        setTimeout(()=>{document.getElementById("display").innerHTML=`${Dice2} played`},100)
+                        setTimeout(()=>{document.getElementById("display").innerHTML=`${player.name} Turn ... Roll Dice`},800)
+                        moveToken(i,dice2)
+                        dice1Used = true
+                        dice2Used =true
+                        gameOn =false
+                        changePlayer()
+                        start()
                        }
                     })
                }
@@ -1100,7 +1111,8 @@ function tokenMoves(){
                 for(let i=1;i<5;i++){
                         document.getElementById(`${player.zone}Token${i}`).addEventListener("click",function(e){
                         if (dice2Used == false && player.position[i] != null && colorCheck(e)) {
-                            console.log("dice2")
+                            setTimeout(()=>{document.getElementById("display").innerHTML=`${dice2} played`},100)
+                            setTimeout(()=>{document.getElementById("display").innerHTML=`${player.name} Turn ... Roll Dice`},800)
                             moveToken(i,dice2)
                             dice1Used = true
                             dice2Used =true
@@ -1115,27 +1127,28 @@ function tokenMoves(){
             for(let i=1;i<5;i++){
                 document.getElementById(`${player.zone}Token${i}`).addEventListener("click",function(e){
                    if (dice2Used == false && player.position[i] == null && colorCheck(e)) {
-                    console.log("dice2")
-                       bringOut(i)
-                       dice2Used =true
-                       gameOn =true
-                       setTimeout(()=>{dice1Used =false},200)
+                        setTimeout(()=>{document.getElementById("display").innerHTML=`You just played a ${dice2} , you have a ${dice1} left`,200})
+                        bringOut(i)
+                        dice2Used =true
+                        gameOn =true
+                        setTimeout(()=>{dice1Used =false},200)
                    }
                 })
                 document.getElementById(`${player.zone}Token${i}`).addEventListener("click",function(e){
                    if (dice2Used == false && player.position[i] != null & colorCheck(e)) {
-                    console.log("dice2")
-                       moveToken(i,dice2)
-                       dice2Used =true
-                       gameOn =true
-                       setTimeout(()=>{dice1Used =false},200)
+                        setTimeout(()=>{document.getElementById("display").innerHTML=`You just played a ${dice2} , you have a ${dice1} left`,200})
+                        moveToken(i,dice2)
+                        dice2Used =true
+                        gameOn =true
+                        setTimeout(()=>{dice1Used =false},200)
                    }
                 })
             }
                     for(let i=1;i<5;i++){
                         document.getElementById(`${player.zone}Token${i}`).addEventListener("click",function(e){
                             if (dice1Used == false && player.position[i] != null && colorCheck(e)) {
-                                console.log("dice1")
+                                setTimeout(()=>{document.getElementById("display").innerHTML=`${dice1} played`},100)
+                                setTimeout(()=>{document.getElementById("display").innerHTML=`${player.name} Turn ... Roll Dice`},800)
                                 console.log(dice1)
                                 moveToken(i,dice1)
                                 dice1Used = true
@@ -1148,56 +1161,54 @@ function tokenMoves(){
                     }
         }else{
             if(player.inside != 4){
+            dice1Used =false
             dice2Used =true
             for(let i =1;i<5;i++){
             document.getElementById(`${player.zone}Token${i}`).addEventListener("click",function(e){
                 if (dice1Used == false && player.position[i] != null && colorCheck(e)) {
-                    console.log("dice1")
+                    setTimeout(()=>{document.getElementById("display").innerHTML=`${dice1} Used, you have ${dice2} left`,200})
                     moveToken(i,dice1)
                     dice1Used = true
+                    dice2Used=false
                     gameOn =true
                     setTimeout(()=>{dice2Used =false},200) 
                 }
              })
             document.getElementById(`${player.zone}Token${i}`).addEventListener("click",function(e){
                 if (dice2Used == false && player.position[i] != null && colorCheck(e)) {
-                 console.log("dice2")
+                    setTimeout(()=>{document.getElementById("display").innerHTML=`${dice2} Used`,200})
+                    setTimeout(()=>{document.getElementById("display").innerHTML=`${player.name} Turn ... Roll Dice`},800)
                     moveToken(i,dice2)
                     dice2Used =true
                     dice1Used =true
                     gameOn =false
+                    console.log("here")
                     changePlayer()
                     start()
                 }
              })}}
              else{
-                for(let i =1;i<5;i++){
-                    // document.getElementById(`${player.zone}Token${i}`).addEventListener("click",function()
-                    // {
-                    //     console.log("NO moves to make")
-                    // })
-                }
+                console.log("here")
+                    changePlayer()
+                    start()
+                    startButton = true
+                    gameOn =false
+
             }
         }
 }
+function noMove(){
+    changePlayer()
+    start()
+    startButton = true
+    gameOn =false
 
+}
 function start(){
     playersRoll()
-
-    if(dice1Used == true ){
-        if(dice1 == 6){
-
-        }else{
-
-        }
-    }
-    if(dice2Used == false){
-
-    }
 }
 document.addEventListener("DOMContentLoaded",function(){
-    start()
-    
+   start()
 })
 
 
