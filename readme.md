@@ -1,11 +1,13 @@
 # Ludo
 
-## a description of the app
+## Description of the app
+
 Ludo is a strategy board game for two to four players, in which the players race their four tokens
 from start to finish according to the rolls of a single die.
 Skills required: Strategy, tactics, counting, probability // sincerely I feel it's all luck 
 
-## the approach taken
+## Approach taken
+
 First off I created a lot of DIV's to to make the board and numbered them from 0 all the way to 71. 
 It took a while to figure out how I was going to represent each token. I was going to make the divs change color when clicked on,
 but a lot of question where developed. So I made represented each token with a div, that gave me the ability to pick on each token.
@@ -15,7 +17,9 @@ favoured to move freely (code wise) so I made an algorithm to help reduce that e
 but an update would come soon... hopefully I don't get carried away with other projects
 
 
-## a link to the deployed live site : https://jamesonwordi.github.io/Ludo/
+## a link to the deployed live site 
+
+https://jamesonwordi.github.io/Ludo/
 
 ## explanations of the technologies used
 
@@ -25,11 +29,13 @@ Lastly I made use of Javascript. eventListener was about to bully me cause I did
 but I think I bullied it(eventListener) instead, made use of the regular loops and conditional statements, also functions
 
 ## a post-project reflection with any unsolved problems or growth areas you may have had
+
 It was a fun experience. I feel I didn't give my MVP enough attention at first cause I was so eager to start the project,
 but lesson learnt, one needs to plan first before embarking on such adventures. also got to learn new error statements and also 
 the importance of console.log when debugging. can't wait to learn new things and come back to edit this piece
 
 ## any sources used
+
 mdn was my friend for figuring out how some method workedStretch Goal
 
 
