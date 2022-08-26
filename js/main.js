@@ -200,30 +200,46 @@ function playersRoll(){
             if(gameOn == false){
                 gameOn =true
                 dice= rollDice()
-                dice2= rollDice()
                 diceUsed = false
-                dice2Used = false
-                console.log(dice,dice2)
+                // console.log(dice,dice2)
                 setTimeout(()=>{document.getElementById("display").innerHTML=` ${player.name} has rolled a ${dice} `},400)
                 tokenMoves()
             }})
             // Reset Event Listener
-            resetButton.addEventListener("click",function(){
-                 gameOn =false
-                 startButton = true
-                 winner = false
-                 dice =0
-                 for(let i =0;i<4;i++){
-                    let targetBox = document.getElementById(`${player.zone}`)
-                    for(let j =1; j<5; j++){
-                        targetBox.append(document.getElementById(`${player.zone}Token${i}`))
-                    }
-                    changePlayer()
-                 }
-
-            })
+            reset()
          }
     })
+}
+function reset(){
+    resetButton.addEventListener("click",function(){
+        gameOn =false
+        startButton = true
+        winner = false
+        dice =0
+        player.inside= 4
+        player.outside= 0
+        player.finished= 0
+        for(let i =1;i<5 ;i++){
+           
+           let targetBox = document.getElementById(`${player.zone}`)
+           for(let j =1; j<5; j++){
+               if(player.position[j] != 100){
+                console.log(player , j)
+               document.getElementById(`${player.zone}Token${j}`).remove()    
+            }
+            player.position[j] = null
+            let newDiv = document.createElement("div")
+            newDiv.classList.add(`${player.name}Token`)
+            newDiv.setAttribute("id", `${player.zone}Token${j}`)
+            targetBox.append(newDiv)
+           }
+           changePlayer()
+           console.log(player)
+        }
+        setTimeout(()=>{document.getElementById("display").innerHTML=`Reset Made`},100)
+        setTimeout(()=>{document.getElementById("display").innerHTML=`Blue's Starts ... Roll Dice`},1200)
+         player = blue
+   })
 }
 
 function tokenMoves(){
@@ -232,7 +248,7 @@ function tokenMoves(){
             for(let i=1;i<5;i++){
                  document.getElementById(`${player.zone}Token${i}`).addEventListener("click",function(e){
                     if (diceUsed == false && player.position[i] == null && colorCheck(e) && winner ==false) {
-                        setTimeout(()=>{document.getElementById("display").innerHTML=`${player.name}'s Turn ... Roll1 Dice`},200)
+                        setTimeout(()=>{document.getElementById("display").innerHTML=`${player.name}'s Turn ... Roll Dice`},200)
                         gameOn =false
                         bringOut(i)
                         diceUsed = true
@@ -244,7 +260,7 @@ function tokenMoves(){
                     if (diceUsed == false && player.position[i] != null && colorCheck(e) && winner ==false) {
                         moveToken(i,dice)
                         if(winner ==false){
-                        setTimeout(()=>{document.getElementById("display").innerHTML=`${player.name}'s Turn ... Roll2 Dice`},200)
+                        setTimeout(()=>{document.getElementById("display").innerHTML=`${player.name}'s Turn ... Roll Dice`},200)
                         gameOn =false
                         diceUsed = true
                         setTimeout(()=>{dice2Used =false},200) 
@@ -262,7 +278,7 @@ function tokenMoves(){
                     
                     moveToken(i,dice)
                     if(winner ==false){
-                    setTimeout(()=>{document.getElementById("display").innerHTML=`${player.name} Turn ... Roll3 Dice`},200)
+                    setTimeout(()=>{document.getElementById("display").innerHTML=`${player.name} Turn ... Roll Dice`},200)
                     diceUsed = true
                     setTimeout(()=>{dice2Used =false},200) 
                     changePlayer()
