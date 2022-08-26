@@ -4,7 +4,8 @@
 
 Ludo is a strategy board game for two to four players, in which the players race their four tokens
 from start to finish according to the rolls of a single die.
-Skills required: Strategy, tactics, counting, probability // sincerely I feel it's all luck 
+Skills required: Strategy, tactics, counting, probability. 
+Sincerely I feel it's all luck 
 
 ## Approach Taken
 
@@ -15,7 +16,7 @@ I used divs to also represent the pathway where the tokens would pass. Also had 
 The pathway have sections where only a token of a specific color can move on. Since the div starts from 0 all the way to 71. some tokens won't be
 favoured to move freely (code wise) so I made an algorithm to help reduce that effect. I haven't completely patched the bug produced by this section,
 but an update would come soon... hopefully I don't get carried away with other projects
-
+http://www.gunplot.net/main/sites/default/files/uckers/ludoboardlayout.gif
 
 ## a link to the deployed live site 
 
