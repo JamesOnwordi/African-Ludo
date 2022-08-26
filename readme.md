@@ -8,8 +8,8 @@ Skills required: Strategy, tactics, counting, probability // sincerely I feel it
 ## the approach taken
 First off I created a lot of DIV's to to make the board and numbered them from 0 all the way to 71. 
 It took a while to figure out how I was going to represent each token. I was going to make the divs change color when clicked on,
-but a lot of question where developed. So I made represented each token with a <div>, that gave me the ability to pick on each token.
-I used <div> to also represent the pathway where the tokens would pass. Also had to create an algorithm for the token to go round the walkway
+but a lot of question where developed. So I made represented each token with a div, that gave me the ability to pick on each token.
+I used div to also represent the pathway where the tokens would pass. Also had to create an algorithm for the token to go round the walkway
 The pathway have sections where only a token of a specific color can move on. Since the <div> starts from 0 all the way to 71. some tokens won't be
 favoured to move freely (code wise) so I made an algorithm to help reduce that effect. I haven't completely patched the bug produced by this section,
 but an update would come soon... hopefully I don't get carried away with other projects
