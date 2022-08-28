@@ -4,21 +4,13 @@
 
 Ludo is a strategy board game for two to four players, in which the players race their four tokens
 from start to finish according to the rolls of a dice. This app is an emulation of the real board game, it purpose is to give the user the same 
-experience and satisfaction a real board game would produce. 
+experience and satisfaction a real ludo board would. 
 
-# Wireframe
-![Wireframe] (https://wireframe.cc/MMhJV3)
 
 ## Approach Taken
+First of all I created the board structure of the game. I created a pahtway where each token's would follow and I used div's to create each pathway giving each of them an id starting from 0 all the way to 71.
+I used div to represent each tokens in each color and game them classes of different names.
 
-First off I created a lot of divs to make the board and numbered them from 0 all the way to 71. 
-It took a while to figure out how I was going to represent each token. I was going to make the divs change color when clicked on,
-but a lot of question where developed. So I represented each token with a div, that gave me the ability to pick on each token.
-I used divs to also represent the pathway where the tokens would pass. Also had to create an algorithm for the token to go round the walkway
-The pathway have sections where only a token of a specific color can move on. Since the div starts from 0 all the way to 71. some tokens won't be
-favoured to move freely (code wise) so I made an algorithm to help reduce that effect. I haven't completely patched the bug produced by this section,
-but an update would come soon... hopefully I don't get carried away with other projects
-http://www.gunplot.net/main/sites/default/files/uckers/ludoboardlayout.gif
 
 ## a link to the deployed live site 
 
