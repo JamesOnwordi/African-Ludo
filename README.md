@@ -37,7 +37,7 @@ https://jamesonwordi.github.io/Ludo/
 
 ## Post-project Reflection
 * Always have a layed out plan when embarking on any project, going with the flow would always bring confusion:
-To always come up with a plan before starting any journey. I believe because I was too excited , I did not really come up with any base to always look to check if I was untrack, so I got carried away trying to come up with more complex ideas and this affected me while working on the project. 
+I believe to always come up with a plan before starting any journey was the most important lesson I learnt from this project. I was too excited and I did not really come up with any base to always look to check if I was untrack, so I got carried away trying to come up with more complex ideas and this affected me while working on the project. 
 
 * I learnt a lot while using addEventListeners, because of the game I choose eventListeners had to be on at certain period of the game and I didn't realize that I felt there was a way to put a pause to it, but had to figure out the hard way. I still believe there is a way to work without using conditional statement inside the Listeners so I'll keep on practicing using it.
 
