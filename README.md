@@ -41,7 +41,7 @@ I believe to always come up with a plan before starting any journey was the most
 
 * I learnt a lot while using addEventListeners, because of the game I choose eventListeners had to be on at certain period of the game and I didn't realize that I felt there was a way to put a pause to it, but had to figure out the hard way. I still believe there is a way to work without using conditional statement inside the Listeners so I'll keep on practicing using it.
 
-* Lastly I learnt that writing codes for what one can relate to is always a fun thing to do, you'll always push yourself to accomplish it. Unlike this readme... But keeping records for other people to be aware of what is going on is important too, I've learnt that too .
+* Lastly I learnt that writing codes for what one can relate to is always a fun thing to do, you'll always push yourself to accomplish it. Unlike this readme... But keeping records for other people to be aware of what is going on is also important, I've learnt that too .
 
 
 ## Credit/Sources
