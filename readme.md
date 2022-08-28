@@ -7,7 +7,7 @@ from start to finish according to the rolls of a dice. This app is an emulation 
 experience and satisfaction a real board game would produce. 
 
 # Wireframe
-![Wireframe]([https://wireframe.cc/MMhJV3](https://wireframe.cc/MMhJV3))
+![Wireframe]([https://wireframe.cc/MMhJV3])
 
 ## Approach Taken
 
