@@ -18,7 +18,7 @@ The first step was creating the board, I made a base for each player where all f
 After the board was created I made the tokens using divs as well, to make each token movable. I used a setInterval to move the tokens around the board, since each players token had a different home the starting position was always different so I made a function that returns where each token should be whenever the function is called. For example the starting box for a yellow token would be div 40 and each token moves clock wise so when the token gets to box51 the function returns a 0 as the position for the next div.
 ![Wireframe](LudoBoard.png)
 
-## a link to the deployed live site 
+## Deployed Live Site's Link
 
 https://jamesonwordi.github.io/Ludo/
 
