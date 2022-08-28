@@ -45,4 +45,4 @@ I believe to always come up with a plan before starting any journey was the most
 
 
 ## Credit/Sources
-“How to Play Ludo” Wikipedia, wikiHow Staff, May 2, 2021, [URL](https://www.wikihow.com/Play-Ludo).
+“How to Play Ludo” Wikipedia, wikiHow Staff, May 2, 2021, https://www.wikihow.com/Play-Ludo.
