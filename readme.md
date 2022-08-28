@@ -10,6 +10,8 @@ experience and satisfaction a real ludo board would.
 ## Approach Taken
 First of all I created the board structure of the game. I created a pahtway where each token's would follow and I used div's to create each pathway giving each of them an id starting from 0 all the way to 71.
 I used div to represent each tokens in each color and game them classes of different names.
+![Wireframe](LudoBooard.png)
+
 
 
 ## a link to the deployed live site 
