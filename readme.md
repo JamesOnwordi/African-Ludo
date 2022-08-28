@@ -3,9 +3,11 @@
 ## Description Of The App
 
 Ludo is a strategy board game for two to four players, in which the players race their four tokens
-from start to finish according to the rolls of a single die.
-Skills required: Strategy, tactics, counting, probability. 
-Sincerely I feel it's all luck 
+from start to finish according to the rolls of a dice. This app is an emulation of the real board game, it purpose is to give the user the same 
+experience and satisfaction a real board game would produce. 
+
+# Wireframe
+![Wireframe](https://wireframe.cc/MMhJV3)
 
 ## Approach Taken
 
