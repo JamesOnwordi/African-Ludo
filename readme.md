@@ -6,13 +6,11 @@ Ludo is a strategy board game for two to four players, in which the players race
 from start to finish according to the rolls of a dice. This app is an emulation of the real board game, it purpose is to give the user the same 
 experience and satisfaction a real ludo board would. 
 
-
 ## Approach Taken
-First of all I created the board structure of the game. I created a pahtway where each token's would follow and I used div's to create each pathway giving each of them an id starting from 0 all the way to 71.
-I used div to represent each tokens in each color and game them classes of different names.
+My first step was creating the board, I made a base for each player where all four tokens would be originally placed, then I made the pathways the tokens would follow to get to their homes. I accomplished that by compacting 18 divs in a main div and sorting their position out, i had a total of 72 divs created and gave each and every one an id of "box"i where i represent the number of the div id starting from 0 all the way to 71.
 ![Wireframe](LudoBoard.png)
-
-
+After the board was created I made the tokens, used divs as well for each token to make it movable. 
+<!-- algorithm -->
 
 ## a link to the deployed live site 
 
