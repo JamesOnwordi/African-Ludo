@@ -3,7 +3,7 @@
 ## The Game
 Ludo is a strategy board game for two to four players, in which the players race their four tokens from start to
 finish according to the rolls of a dice. This app is an emulation of the real board game, with the purpose of giving 
-user the same experience and satisfaction a real ludo board would.
+user the same experience and satisfaction a real ludo board would give.
 
 ## Tech Being Used
 * HTML
