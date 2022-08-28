@@ -36,7 +36,6 @@ https://jamesonwordi.github.io/Ludo/
 * Have moving characters
 
 ## Post-project Reflection
-### I learnt a lot embarking on this project, the most important lessons:
 * Always have a layed out plan when embarking on any project, going with the flow would always bring confusion:
 To always come up with a plan before starting any journey. I believe because I was too excited , I did not really come up with any base to always look to check if I was untrack, so I got carried away trying to come up with more complex ideas and this affected me while working on the project. 
 
